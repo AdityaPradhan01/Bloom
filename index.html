@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Bloom | Pro Label Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --app-height: 100%;
+    }
+
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      overscroll-behavior-y: none;
+      height: 100vh;
+      height: var(--app-height);
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    }
+
+    .theme-transition {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .scroll-container {
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .scroll-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .shutter-btn {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: white;
+      padding: 4px;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+    }
+    
+    .dark .shutter-btn {
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+    }
+
+    .shutter-btn:active {
+      transform: scale(0.92);
+      box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+    }
+
+    @keyframes scan-line {
+      0% { top: 0%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+    .animate-scan {
+      animation: scan-line 4s linear infinite;
+    }
+
+    .safe-top { padding-top: env(safe-area-inset-top); }
+    .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+    
+    .tabular { font-variant-numeric: tabular-nums; }
+  </style>
+  <script>
+    const setHeight = () => {
+      document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
+    }
+    window.addEventListener('resize', setHeight);
+    window.addEventListener('orientationchange', setHeight);
+    setHeight();
+  </script>
+</head>
+<body class="bg-slate-50 dark:bg-[#050505] text-slate-900 dark:text-white selection:bg-bloom-500/30">
+  <div id="root"></div>
+<script type="module" src="./index.tsx"></script>
+</body>
+</html>
